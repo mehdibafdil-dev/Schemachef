@@ -1,11 +1,5 @@
 # SchemaChef
 
-![WordPress Compatibility](https://img.shields.io/wordpress/v/schemachef?style=flat-square)
-![Plugin Version](https://img.shields.io/github/v/release/mehdibafdil-dev/schemachef?style=flat-square)
-![License](https://img.shields.io/github/license/mehdibafdil-dev/schemachef?style=flat-square)
-
-## 🍳 Description
-
 SchemaChef is a powerful WordPress plugin that simplifies the implementation of Recipe Schema Markup for your food blog or recipe website. By automatically generating structured data, it enhances your recipes' visibility in search results and improves your overall SEO performance.
 
 ### ✨ Key Features
@@ -27,7 +21,7 @@ SchemaChef is a powerful WordPress plugin that simplifies the implementation of 
 
 Our plugin follows a modern, modular architecture:
 
-```text
+```
 schemachef/
 ├── admin/                  # Admin-specific functionality
 │   ├── css/               # Admin styles
@@ -68,6 +62,16 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE) file for details.
 
+## 👤 Author
+
+MEHDI BAFDIL
+- GitHub: [@mehdibafdil](https://github.com/mehdibafdil-dev)
+- Email: [mehdibafdil@gmail.com]
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/mehdibafdil-dev/Schemachef/issues).
+
 ## 📝 Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a history of changes.
@@ -75,6 +79,10 @@ See [CHANGELOG.md](CHANGELOG.md) for a history of changes.
 ## 💬 Support
 
 Need help? Contact us at mehdibafdil@gmail.com
+
+## ⭐ Show your support
+
+Give a ⭐️ if this project helped you!
 
 ## 🙏 Acknowledgments
 
