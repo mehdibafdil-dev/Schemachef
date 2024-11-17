@@ -1,0 +1,253 @@
+<div class="vpsc-wrapper">
+	<div class="card">
+		<img src="{{ SCHEMACHEF_ADMIN_ASSETS_PATH }}/img/schemachef.svg" class="card-img-top" alt="" style="max-width: 200px;">
+		<div class="card-body">
+			<ul class="nav nav-tabs p-2" id="vpscTabs">
+				<li class="nav-item">
+					<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">
+						<i class="fa-sharp fa fa-gear"></i>
+						General settings</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">
+						<i class="fas fa-utensils"></i>
+						Recipe Schema Options</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">
+						<i class="fas fa-clipboard-list-check"></i>
+						Recipe List</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabsContent">
+				<div class="tab-pane fade show active" id="tab1">
+					<form method="POST" id="submit_recipe_general_settings_form">
+						<div class="row p-2">
+							<div class="col-md-12">
+								<div class="custom-control custom-switch">
+									{% set checked = general_enable ? 'checked' : '' %}
+									<input type="checkbox" class="custom-control-input" id="customSwitch1" name="general_enable" value="1" {{ checked }}>
+									<label class="custom-control-label" for="customSwitch1">Enable/Disable
+																																																																																																																																																																																				                                        Plugin</label>
+								</div>
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-md-12 text-center">
+								<input type="hidden" name="update_general_settings" value="1">
+								<a href="#" id="button_submit_recipe_general_settings_data" class="btn btn-primary">Save
+																																																																																																																																																																		                                    Settings</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="tab2">
+					<form method="POST" id="submit_recipe_default_data_form">
+						<div class="row">
+							<div class="form-group col-md-12 text-center">
+								<p class="title-form">Recipe Schema Default Data</p>
+							</div>
+						</div>
+						<div class="row p-2">
+							<div class="col-md-6">
+								<label for="default_recipe_name">Default Recipe Name:</label>
+								<input type="text" class="form-control" id="default_recipe_name" name="default_recipe_name" value="{{ default_recipe_name }}"/>
+							</div>
+							<div class="col-md-6">
+								<label for="default_recipe_description">Default Recipe Description :</label>
+								<textarea class="form-control" id="default_recipe_description" name="default_recipe_description" rows="1">{{ default_recipe_description }}</textarea>
+							</div>
+						</div>
+						<div class="row p-2">
+							<div class="col-md-4">
+								<label for="default_recipe_prep_time">Prep Time :</label>
+								<input type="text" class="form-control" id="default_recipe_prep_time" name="default_recipe_prep_time" value="{{ default_recipe_prep_time }}"/>
+							</div>
+							<div class="col-md-4">
+								<label for="default_recipe_cook_time">Cook Time :</label>
+								<input type="text" class="form-control" id="default_recipe_cook_time" name="default_recipe_cook_time" value="{{ default_recipe_cook_time }}"/>
+							</div>
+							<div class="col-md-4">
+								<label for="default_recipe_total_time">Total Time :</label>
+								<input type="text" class="form-control" id="default_recipe_total_time" name="default_recipe_total_time" value="{{ default_recipe_total_time }}"/>
+							</div>
+						</div>
+						<div class="row p-2">
+							<div class="col-md-3">
+								<label for="default_recipe_keywords">Keywords :</label>
+								<input type="text" class="form-control" id="default_recipe_keywords" name="default_recipe_keywords" value="{{ default_recipe_keywords }}"/>
+							</div>
+							<div class="col-md-3">
+								<label for="default_recipe_category">Category :</label>
+								<input type="text" class="form-control" id="default_recipe_category" name="default_recipe_category" value="{{ default_recipe_category }}"/>
+							</div>
+							<div class="col-md-3">
+								<label for="default_recipe_calories">Calories :</label>
+								<input type="text" class="form-control" id="default_recipe_calories" name="default_recipe_calories" value="{{ default_recipe_calories }}"/>
+							</div>
+							<div class="col-md-3">
+								<label for="default_recipe_calories">Yield :</label>
+								<input type="text" class="form-control" id="default_recipe_yield" name="default_recipe_yield" value="{{ default_recipe_yield }}"/>
+							</div>
+						</div>
+						<div class="row p-2">
+							<div class="col-md-12">
+								<label for="default_recipe_ingredient">Default Recipe Ingredient :</label>
+								<textarea class="form-control" id="default_recipe_ingredient" name="default_recipe_ingredient">{{ default_recipe_ingredient }}</textarea>
+							</div>
+						</div>
+						<div class="row p-2">
+							<div class="col-md-12">
+								<label for="default_recipe_rating">Default Recipe Rating:</label>
+								<div class="star-rating">
+									{% for i in 5..1 %}
+										{% set checked = (default_recipe_rating == i) ? 'checked' : '' %}
+										<input type="radio" id="rating_{{ i }}" name="default_recipe_rating" value="{{ i }}" {{ checked }}/>
+										<label for="rating_{{ i }}"></label>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-md-12 text-center">
+								<input type="hidden" name="submit_recipe_default_data" value="submit_recipe_default_data">
+								<a href="#" id="button_submit_recipe_default_data" class="btn btn-primary">Save
+																																																																																																																																																																		                                    Settings</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="tab3">
+					<table id="recipe-list" class="display">
+						<thead>
+							<tr>
+								<th>Image</th>
+								<th>Article Title</th>
+								<th>Recipe name</th>
+								<th>Recipe description</th>
+								<th>Author</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for recipe_id, recipe in recipe_data %}
+								<tr>
+									<td class="text-center">
+										{% if recipe.image_url %}
+											<img src="{{ recipe.image_url }}" alt="Featured Image"/>
+										{% else %}
+											<img src="{{default_thumbnail_recipelist_url}}" alt="Featured Image"/>
+										{% endif %}
+									</td>
+									<td>{{ recipe.title }}</td>
+									<td>{{ recipe.name }}</td>
+									<td>{{ recipe.description }}</td>
+									<td>{{ recipe.content_author }}</td>
+									<td>
+										<a href="{{ recipe.edit_link|raw }}" class="btn btn-primary">
+											<i class="fas fa-edit"></i>
+										</a>
+										<button class="btn btn-danger delete-recipe" data-recipe-id="{{ recipe_id }}">
+											<i class="fas fa-trash"></i>
+										</button>
+										<button class="btn btn-info view-details" data-toggle="modal" data-target="#recipe-details-modal-{{ recipe_id }}">
+											<i class="fas fa-eye"></i>
+										</button>
+									</td>
+								</tr>
+								<div class="modal fade" id="recipe-details-modal-{{ recipe_id }}" tabindex="-1" role="dialog" aria-labelledby="recipe-details-modal-label-{{ recipe_id }}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="recipe-details-modal-label-{{ recipe_id }}">
+													Recipe Details</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div class="recipe-details">
+													<h3 class="recipe-title">{{ recipe.title }}</h3>
+													<div class="recipe-info">
+														<p>
+															<i class="fas fa-info"></i>
+															Name :
+															{{ recipe.name }}</p>
+														<p>
+															<i class="fas fa-info-circle"></i>
+															Description :
+															{{ recipe.description }}</p>
+														<p>
+															<i class="fas fa-clock"></i>
+															Prep time :
+															{{ recipe.prep_time }}
+														</p>
+														<p>
+															<i class="fas fa-fire"></i>
+															Cook time :
+															{{ recipe.cook_time }}
+														</p>
+														<p>
+															<i class="fas fa-hourglass"></i>
+															Total time :
+															{{ recipe.total_time }}
+														</p>
+														<p>
+															<i class="fas fa-key"></i>
+															Keywords :
+															{{ recipe.keywords }}
+														</p>
+														<p>
+															<i class="fas fa-folder-open"></i>
+															Category :
+															{{ recipe.category }}
+														</p>
+														<p>
+															<i class="fas fa-fire"></i>
+															Calories :
+															{{ recipe.calories }}
+														</p>
+														<p>
+															<i class="fas fa-fire"></i>
+															Yield :
+															{{ recipe.yield }}
+														</p>
+														<p>
+															<i class="fas fa-utensils"></i>
+															Ingredient :
+															{{ recipe.ingredient }}
+														</p>
+														<p class="d-flex flex-row-reverse align-items-center justify-content-end">
+															{% set rating_value = recipe.rating %}
+															{% for i in 1..rating_value %}
+																<i class="fas fa-star"></i>
+															{% endfor %}
+														</p>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</tbody>
+				</table>
+				<script>
+					jQuery(document).ready(function ($) {
+$("#recipe-list").DataTable({
+lengthChange: false,
+buttons: ["copy", "excel", "pdf", "colvis"]
+});
+});
+				</script>
+			</div>
+		</div>
+	</div>
+	<p class="text-right">Version:
+		{{ plugin_data.Version }}
+	</p>
+</div>

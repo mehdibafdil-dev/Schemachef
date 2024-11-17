@@ -1,0 +1,29 @@
+# Ignore core WordPress files
+wp-config.php
+wp-content/
+wp-includes/
+wp-admin/
+
+# Ignore plugin build and cache directories
+/build/
+/node_modules/
+/.cache/
+
+# Ignore development and editor-specific files
+*.log
+*.pot
+*.sql
+*.zip
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore system and hidden files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Ignore composer files (if you're using Composer)
+composer.lock
+vendor/
